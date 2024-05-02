@@ -10,9 +10,6 @@ mod lang_items;
 mod logging;
 mod sbi;
 
-#[path = "boards/qemu.rs"]
-mod board;
-
 core::arch::global_asm!(include_str!("entry.asm"));
 
 fn clear_bss() {
@@ -67,7 +64,6 @@ pub fn rust_main() {
     );
     error!("[kernel] .bss [{:#x}, {:#x})", sbss as usize, ebss as usize);
 
-    use crate::board::QEMUExit;
-    crate::board::QEMU_EXIT_HANDLE.exit_success(); // CI autotest success
+    panic!("shutdown machine!");
 
 }
