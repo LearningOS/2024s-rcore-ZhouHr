@@ -8,7 +8,8 @@ SECTIONS
     skernel = .;
 
     stext = .;
-    .text : {
+    .text :
+    {
         *(.text.entry)
         *(.text .text.*)
     }
